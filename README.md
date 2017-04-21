@@ -13,6 +13,12 @@ Currently, the editor expects a note of the format:
 The editor will display a list of five items, with a checkmark in front of each one. Editing an item will regenerate
 the `todo.txt` formatted note and push it back to the parent window, where the Standard Notes app will save your changes.
 
+## Demo
+
+Try a demo deployment by adding the following editor URL: `https://sn-todotxt-poc-demo.surge.sh/?name=Todo%20Editor%20(Demo)`.
+
+Do not use this for critical data! It is only a proof of concept.
+
 ## Build Setup
 
 ``` bash
