@@ -2,6 +2,8 @@
 
 A simple `todo.txt` format-esque editor for Standard Notes. More of a proof of concept than anything right now.
 
+![](https://github.com/cfdrake/standardnotes-todo-editor/raw/master/.github/screenshot.png)
+
 Currently, the editor expects a note of the format:
 
     Item one here
