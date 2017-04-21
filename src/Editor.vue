@@ -4,8 +4,8 @@
     ul.todo-list
       li(v-for="todo in todos" :class="{ 'done': todo.done }" class="todo-item")
         input.todo-item-checkbox(type="checkbox" v-model="todo.done")
-        input.todo-item-input(type="text" v-model="todo.text" :disabled="todo.done")
-    button(@click="addTodo") +
+        input.todo-item-input(type="text" placeholder="Enter a todo..." v-model="todo.text" :disabled="todo.done")
+    input.new-todo-item(type="text" placeholder="Enter a todo and press return..." autofocus v-model="newTodoText" @change="addTodo")
     button(v-if="hasCompletedTodos" @click="archive") Clear Completed
 </template>
 
@@ -19,6 +19,7 @@ export default {
 
     return {
       debug,
+      newTodoText: "",
       notes: "",
       noteId: "",
       todos: []
@@ -35,7 +36,8 @@ export default {
   },
   methods: {
     addTodo () {
-      this.todos.push({ text: "", done: false, index: this.todos.length + 1 })
+      this.todos.push({ text: this.newTodoText, done: false, index: this.todos.length + 1 })
+      this.newTodoText = ""
     },
     archive () {
       this.todos = this.todos.filter(todo => !todo.done)
@@ -85,6 +87,16 @@ export default {
     width: 100%;
     height: 70px;
     border: 1px solid #ccc;
+  }
+
+  .new-todo-item {
+    margin-left: 22px;
+    font-size: 16px;
+    color: #444;
+    border: none;
+    outline: none;
+    padding: 1em;
+    width: 80%;
   }
 
   .todo-list {
