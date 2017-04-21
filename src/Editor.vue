@@ -7,18 +7,21 @@
         input.todo-item-input(type="text" v-model="todo.text" :disabled="todo.done")
     button(@click="addTodo") +
     button(@click="archive") Clear Completed
-    button(@click="toggleDebug") Toggle Debug
 </template>
 
 <script>
+import parse from 'url-parse'
+
 export default {
   name: 'editor',
   data () {
+    const debug = parse(location.href, true).query.debug === "true"
+
     return {
+      debug,
       notes: "",
       noteId: "",
-      todos: [],
-      debug: false
+      todos: []
     }
   },
   created () {
@@ -49,9 +52,6 @@ export default {
 
         return { index, text, done  }
       })
-    },
-    toggleDebug () {
-      this.debug = !this.debug
     }
   },
   watch: {
