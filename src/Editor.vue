@@ -87,7 +87,6 @@ export default {
     padding: 0;
 
     .todo-item {
-      border: 1px solid #eee;
       padding: 0.5em;
       margin: 0.25em 0;
       display: flex;
