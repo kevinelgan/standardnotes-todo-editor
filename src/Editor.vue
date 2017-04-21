@@ -62,7 +62,7 @@ export default {
       }
     },
     notes (newNotes) {
-      window.parent.postMessage({ text: this.notes, id: this.noteId }, "*")
+      window.parent.postMessage({ text: newNotes, id: this.noteId }, "*")
     }
   }
 }
