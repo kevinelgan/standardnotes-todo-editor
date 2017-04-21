@@ -43,16 +43,14 @@ export default {
       this.todos = this.todos.filter(todo => !todo.done)
     },
     parseTodos (event) {
-      const notes = event.data.text
-      const noteId = event.data.id
+      this.noteId = event.data.id
+      this.notes = event.data.text
 
-      if (!notes) {
+      if (!this.notes) {
         this.todos = []
         return
       }
 
-      this.noteId = noteId
-      this.notes = notes
       this.todos = this.notes.split("\n").map((line, index) => {
         const text = line.replace(/^x /, "")
         const done = line[0] === "x" && line[1] === " "
