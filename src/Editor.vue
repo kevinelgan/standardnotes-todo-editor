@@ -1,11 +1,13 @@
 <template lang="pug">
   div#app
-    textarea.editor(v-model="notes" disabled)
+    textarea.debug(v-if="debug" v-model="notes" disabled)
     ul.todo-list
       li(v-for="todo in todos" :class="{ 'done': todo.done }" class="todo-item")
-        input(type="checkbox" v-model="todo.done")
-        span &nbsp;
-        label {{ todo.text }}
+        input.todo-item-checkbox(type="checkbox" v-model="todo.done")
+        input.todo-item-input(type="text" v-model="todo.text" :disabled="todo.done")
+    button(@click="addTodo") +
+    button(@click="archive") Clear Completed
+    button(@click="toggleDebug") Toggle Debug
 </template>
 
 <script>
@@ -15,7 +17,8 @@ export default {
     return {
       notes: "",
       noteId: "",
-      todos: []
+      todos: [],
+      debug: false
     }
   },
   created () {
@@ -23,6 +26,12 @@ export default {
     window.addEventListener("message", this.parseTodos, false)
   },
   methods: {
+    addTodo () {
+      this.todos.push({ text: "", done: false, index: this.todos.length + 1 })
+    },
+    archive () {
+      this.todos = this.todos.filter(todo => !todo.done)
+    },
     parseTodos (event) {
       const notes = event.data.text
       const noteId = event.data.id
@@ -40,6 +49,9 @@ export default {
 
         return { index, text, done  }
       })
+    },
+    toggleDebug () {
+      this.debug = !this.debug
     }
   },
   watch: {
@@ -57,9 +69,15 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+* {
+  box-sizing: border-box;
+}
+
 #app {
-  .editor {
-    width: 300px;
+  font-family: Helvetica;
+
+  .debug {
+    width: 100%;
     height: 70px;
     border: 1px solid #ccc;
   }
@@ -69,8 +87,35 @@ export default {
     padding: 0;
 
     .todo-item {
-      &.done {
-        color: #999;
+      border: 1px solid #eee;
+      padding: 0.5em;
+      margin: 0.25em 0;
+      display: flex;
+    }
+
+    .todo-item-checkbox {
+      position: relative;
+      top: 2px;
+    }
+
+    .todo-item-input {
+      position: relative;
+      left: 8px;
+      border: none;
+      width: 100%;
+      flex-grow: 1;
+      font-size: 16px;
+      color: #444;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .done {
+      .todo-item-input {
+        color: #ccc;
+        text-decoration: line-through;
       }
     }
   }
