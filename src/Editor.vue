@@ -6,7 +6,7 @@
         input.todo-item-checkbox(type="checkbox" v-model="todo.done")
         input.todo-item-input(type="text" v-model="todo.text" :disabled="todo.done")
     button(@click="addTodo") +
-    button(@click="archive") Clear Completed
+    button(v-if="hasCompletedTodos" @click="archive") Clear Completed
 </template>
 
 <script>
@@ -22,6 +22,11 @@ export default {
       notes: "",
       noteId: "",
       todos: []
+    }
+  },
+  computed: {
+    hasCompletedTodos () {
+      return this.todos.filter(t => t.done).length > 0
     }
   },
   created () {
