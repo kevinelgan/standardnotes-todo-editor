@@ -114,6 +114,7 @@ export default {
     .done {
       .todo-item-input {
         color: #ccc;
+        background: white;
         text-decoration: line-through;
       }
     }
