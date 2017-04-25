@@ -3,13 +3,18 @@
     ul.todo-list
       li(v-for="todo in todos" :class="{ 'done': todo.done }" class="todo-item")
         input.todo-item-checkbox(type="checkbox" v-model="todo.done")
-        input.todo-item-input(type="text" placeholder="Enter a todo..." v-model="todo.text" :disabled="todo.done")
+        input.todo-item-input(type="text" placeholder="Enter a todo..." v-model="todo.text" :disabled="todo.done" @keyup.ctrl.t="toggle(todo)")
     input.new-todo-item(type="text" placeholder="Enter a todo and press return..." autofocus v-model="newTodoText" @change="addTodo")
     button(v-if="hasCompletedTodos" @click="archive") Clear Completed
 </template>
 
 <script>
+import Vue from 'vue'
 import parse from 'url-parse'
+
+Vue.config.keyCodes = {
+  t: 84
+}
 
 export default {
   name: 'editor',
@@ -53,6 +58,9 @@ export default {
 
         return { index, text, done  }
       })
+    },
+    toggle (todo) {
+      todo.done = !todo.done
     }
   },
   watch: {
