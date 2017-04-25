@@ -12,24 +12,24 @@ Open your editor list in Standard Notes by selecting the **Editor** menu, paste 
 
 Install all requirements via NPM:
 
-```
+```bash
 # install dependencies
 npm install
 ```
 
 ## Building
 
-To run a local instance of this editor, run:
+To run a local instance of the editor for development, run:
 
-```
+```bash
 # serve with hot reload at localhost:8080
 npm start
 ```
 
 To build for production, run:
 
-```
+```bash
 npm run build
 ```
 
-The bundled Javascript will be written to `dist/`.
+The production build will be located in the `build/` folder.
