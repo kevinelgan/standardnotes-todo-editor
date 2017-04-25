@@ -9,7 +9,7 @@
     "url": "https://github.com/cfdrake/standardnotes-todo-editor"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && mkdir -p build && mv index.html build && mv dist build",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && mkdir -p build && cp index.html build/index.html && mv dist build/dist",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
