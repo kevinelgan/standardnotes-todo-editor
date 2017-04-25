@@ -83,7 +83,7 @@ export default {
     color: #444;
     border: none;
     outline: none;
-    padding: 1em;
+    padding: 0.5em 1em 1em 1em;
     width: 80%;
     background: transparent;
   }
@@ -91,6 +91,7 @@ export default {
   .todo-list {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 0;
 
     .todo-item {
       padding: 0.5em;
