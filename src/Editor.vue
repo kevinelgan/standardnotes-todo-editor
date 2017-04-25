@@ -95,6 +95,7 @@ export default {
     outline: none;
     padding: 1em;
     width: 80%;
+    background: transparent;
   }
 
   .todo-list {
@@ -120,6 +121,7 @@ export default {
       flex-grow: 1;
       font-size: 16px;
       color: #444;
+      background: transparent;
 
       &:focus {
         outline: none;
@@ -129,7 +131,6 @@ export default {
     .done {
       .todo-item-input {
         color: #ccc;
-        background: white;
         text-decoration: line-through;
       }
     }
