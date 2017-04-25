@@ -1,37 +1,37 @@
 # Todo Editor for Standard Notes
 
-A simple `todo.txt` format-esque editor for Standard Notes. More of a proof of concept than anything right now.
+A simple WYSIWYG editor for Standard Notes that saves in the [todo.txt format](https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format).
 
 ![](https://github.com/cfdrake/standardnotes-todo-editor/raw/master/.github/screenshot.png)
 
-Currently, the editor expects a note of the format:
-
-    Item one here
-    Item two here
-    x Item three is done
-    x So is four!
-    Five however, is not
-
-The editor will display a list of five items, with a checkmark in front of each one. Editing an item will regenerate
-the `todo.txt` formatted note and push it back to the parent window, where the Standard Notes app will save your changes.
-
-## Demo
+## Usage
 
 Try a demo deployment by adding the following editor URL: `https://sn-todotxt-poc-demo.surge.sh/?name=Todo%20Editor%20(Demo)`.
 
 Do not use this for critical data! It is only a proof of concept.
 
-## Build Setup
+## Build Requirements
 
-``` bash
+Install all requirements via NPM:
+
+```
 # install dependencies
 npm install
+```
 
+## Building
+
+To run a local instance of this editor, run:
+
+```
 # serve with hot reload at localhost:8080
-npm run dev
+npm start
+```
 
-# build for production with minification
+To build for production, run:
+
+```
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+The bundled Javascript will be written to `dist/`.
