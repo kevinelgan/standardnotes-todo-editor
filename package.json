@@ -14,7 +14,6 @@
     "pug-loader": "^2.3.0",
     "sass": "^0.5.0",
     "sass-loader": "^6.0.3",
-    "url-parse": "^1.1.8",
     "vue": "^2.2.1"
   },
   "devDependencies": {
