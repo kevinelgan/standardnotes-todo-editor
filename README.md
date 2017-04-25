@@ -6,9 +6,7 @@ A simple WYSIWYG editor for Standard Notes that saves in the [todo.txt format](h
 
 ## Usage
 
-Try a demo deployment by adding the following editor URL: `https://sn-todotxt-poc-demo.surge.sh/?name=Todo%20Editor%20(Demo)`.
-
-Do not use this for critical data! It is only a proof of concept.
+Open your editor list in Standard Notes by selecting the **Editor** menu, paste `https://cfdrake.github.io/standardnotes-todo-editor/?name=Todos` into the "Add new editor via URL" textbox, then press <kbd>return</kdb>.
 
 ## Build Requirements
 
