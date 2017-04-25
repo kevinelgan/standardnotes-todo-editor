@@ -1,6 +1,5 @@
 <template lang="pug">
   div#app
-    textarea.debug(v-if="debug" v-model="notes" disabled)
     ul.todo-list
       li(v-for="todo in todos" :class="{ 'done': todo.done }" class="todo-item")
         input.todo-item-checkbox(type="checkbox" v-model="todo.done")
@@ -15,10 +14,7 @@ import parse from 'url-parse'
 export default {
   name: 'editor',
   data () {
-    const debug = parse(location.href, true).query.debug === "true"
-
     return {
-      debug,
       newTodoText: "",
       notes: "",
       noteId: "",
@@ -80,12 +76,6 @@ export default {
 
 #app {
   font-family: Helvetica;
-
-  .debug {
-    width: 100%;
-    height: 70px;
-    border: 1px solid #ccc;
-  }
 
   .new-todo-item {
     margin-left: 22px;
