@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import parseTodos from "../helpers/parseTodos.js"
+
 export default {
   name: "app-editor",
   data () {
@@ -23,6 +25,9 @@ export default {
     completedTodos () {
       return this.todos.filter(t => t.done)
     },
+    iframe () {
+      return window.frameElement !== null
+    },
     notes () {
       return this.todos
         .map(t => `${t.done ? "x " : "" }${t.text}`)
@@ -30,12 +35,17 @@ export default {
     }
   },
   created () {
-    if (!window.frameElement) {
+    if (!this.iframe) {
       return
     }
 
     window.parent.postMessage({ status: "ready" }, "*")
-    window.addEventListener("message", this.parseTodos, false)
+    window.addEventListener("message", (event) => {
+      const { id, todos } = parseTodos(event)
+
+      this.noteId = id
+      this.todos = todos
+    }, false)
   },
   methods: {
     addTodo () {
@@ -44,30 +54,13 @@ export default {
     },
     clearCompletedTodos () {
       this.todos = this.todos.filter(todo => !todo.done)
-    },
-    parseTodos (event) {
-      const notes = event.data.text
-
-      this.noteId = event.data.id
-
-      if (notes) {
-        this.todos = notes.split("\n").map((line, index) => {
-          const text = line.replace(/^x /, "")
-          const done = line[0] === "x" && line[1] === " "
-
-          return { index, text, done  }
-        })
-      } else {
-        this.todos = []
-        return
-      }
     }
   },
   watch: {
     todos: {
       deep: true,
       handler (newTodos) {
-        if (!window.frameElement) {
+        if (!this.iframe) {
           return
         }
 
