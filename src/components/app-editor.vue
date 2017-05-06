@@ -6,8 +6,8 @@
         input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @keydown.delete="deleteTodo(todo)")
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
     div.controls
-      button(@click="markAllTodosDone") Mark All as Done
-      button(v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
+      a(href="#" v-if="uncompletedTodos.length > 0" @click="markAllTodosDone") Mark All as Completed
+      a(href="#" v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
 </template>
 
 <script>
@@ -34,6 +34,9 @@ export default {
       return this.todos
         .map(t => `${t.done ? "x " : "" }${t.text}`)
         .join("\n")
+    },
+    uncompletedTodos () {
+      return this.todos.filter(t => !t.done)
     }
   },
   created () {
