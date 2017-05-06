@@ -55,6 +55,11 @@ export default {
   },
   methods: {
     addTodo () {
+      // Do not create blank todos.
+      if (!this.newTodo) {
+        return
+      }
+
       this.todos.push({ text: this.newTodo, done: false })
       this.newTodo = ""
     },
