@@ -4,10 +4,11 @@
       li.todo-item(v-for="todo in todos" :class="{ done: todo.done }")
         input(type="checkbox" v-model="todo.done")
         input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @blur="deleteTodo(todo)" @keydown.delete="deleteTodo(todo)")
+        a.todo-delete(href="#" @click.prevent="deleteTodo(todo, true)") Delete
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
     div.controls
-      a(href="#" v-if="uncompletedTodos.length > 0" @click="markAllTodosDone") Mark All as Completed
-      a(href="#" v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
+      a(href="#" v-if="uncompletedTodos.length > 0" @click.prevent="markAllTodosDone") Mark All as Completed
+      a(href="#" v-if="completedTodos.length > 0" @click.prevent="clearCompletedTodos") Clear Completed
 </template>
 
 <script>
@@ -57,9 +58,9 @@ export default {
       this.todos.push({ text: this.newTodo, done: false })
       this.newTodo = ""
     },
-    deleteTodo (todo) {
-      // Only delete on delete key if there if the todo is empty.
-      if (!todo.text) {
+    deleteTodo (todo, force = false) {
+      // Only delete on delete key if there if the todo is empty, or action is forced.
+      if (force || !todo.text) {
         const index = this.todos.indexOf(todo)
         this.todos.splice(index, 1)
       }
