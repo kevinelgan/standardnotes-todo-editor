@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     addTodo () {
-      console.log("Adding", this.newTodo)
       this.todos.push({ text: this.newTodo, done: false })
       this.newTodo = ""
     },
@@ -81,7 +80,6 @@ export default {
           return
         }
 
-        console.log("Posting notes", this.notes)
         window.parent.postMessage({ text: this.notes, id: this.noteId }, "*")
       }
     }

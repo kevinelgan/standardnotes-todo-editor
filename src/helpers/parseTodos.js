@@ -11,9 +11,6 @@ export default function (event) {
     })
   }
 
-  console.log("Notes Received", text)
-  console.log("Parsed as", todos)
-
   return { id, todos }
 }
 
