@@ -1,0 +1,46 @@
+*
+  box-sizing: border-box
+
+.app-editor
+  font-family: Helvetica
+
+  .todo-new
+    margin-left: 22px
+    font-size: 16px
+    color: #444
+    border: none
+    outline: none
+    padding: 0.5em 1em 1em 1em
+    width: 80%
+    background: transparent
+
+  .todo-list
+    list-style-type: none
+    padding: 0
+    margin-bottom: 0
+
+    .todo-item
+      padding: 0.5em
+      margin: 0.25em 0
+      display: flex
+
+      input[type="checkbox"]
+        position: relative
+        top: 2px
+
+      input[type="text"]
+        position: relative
+        left: 8px
+        border: none
+        width: 100%
+        flex-grow: 1
+        font-size: 16px
+        color: #444
+        background: transparent
+
+        &:focus
+          outline: none
+
+      &.done input[type="text"]
+        color: #ccc
+        text-decoration: line-through
