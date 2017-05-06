@@ -3,7 +3,7 @@
     ul.todo-list
       li.todo-item(v-for="todo in todos" :class="{ done: todo.done }")
         input(type="checkbox" v-model="todo.done")
-        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :editable="!todo.done" @keydown.delete="deleteTodo(todo)")
+        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @keydown.delete="deleteTodo(todo)")
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
     div.controls
       button(@click="markAllTodosDone") Mark All as Done
