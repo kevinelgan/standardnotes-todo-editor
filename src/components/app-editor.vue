@@ -3,7 +3,7 @@
     ul.todo-list
       li.todo-item(v-for="todo in todos" :class="{ done: todo.done }")
         input(type="checkbox" v-model="todo.done")
-        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :editable="!todo.done")
+        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :editable="!todo.done" @keydown.delete="deleteTodo(todo)")
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
     button(v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
 </template>
@@ -51,6 +51,13 @@ export default {
     addTodo () {
       this.todos.push({ text: this.newTodo, done: false })
       this.newTodo = ""
+    },
+    deleteTodo (todo) {
+      // Only delete on delete key if there if the todo is empty.
+      if (!todo.text) {
+        const index = this.todos.indexOf(todo)
+        this.todos.splice(index, 1)
+      }
     },
     clearCompletedTodos () {
       this.todos = this.todos.filter(todo => !todo.done)
