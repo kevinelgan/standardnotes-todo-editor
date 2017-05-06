@@ -26,7 +26,7 @@ export default {
       return this.todos.filter(t => t.done)
     },
     iframe () {
-      return window.frameElement !== null
+      return window !== window.top
     },
     notes () {
       return this.todos
