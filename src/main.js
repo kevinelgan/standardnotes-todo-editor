@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Editor from './Editor.vue'
+import Vue from "vue"
+import AppEditor from "./components/app-editor.vue"
 
 new Vue({
-  el: '#app',
-  render: h => h(Editor)
+  el: "#app",
+  render: h => h(AppEditor)
 })
