@@ -11,6 +11,6 @@ export default function (event) {
     })
   }
 
-  return { id, text }
+  return { id, todos }
 }
 
