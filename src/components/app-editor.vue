@@ -5,7 +5,9 @@
         input(type="checkbox" v-model="todo.done")
         input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :editable="!todo.done" @keydown.delete="deleteTodo(todo)")
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
-    button(v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
+    div.controls
+      button(@click="markAllTodosDone") Mark All as Done
+      button(v-if="completedTodos.length > 0" @click="clearCompletedTodos") Clear Completed
 </template>
 
 <script>
@@ -61,6 +63,9 @@ export default {
     },
     clearCompletedTodos () {
       this.todos = this.todos.filter(todo => !todo.done)
+    },
+    markAllTodosDone () {
+      this.todos = this.todos.map(t => Object.assign(t, { done: true }))
     }
   },
   watch: {
