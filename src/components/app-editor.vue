@@ -3,7 +3,7 @@
     ul.todo-list
       li.todo-item(v-for="todo in todos" :class="{ done: todo.done }")
         input(type="checkbox" v-model="todo.done")
-        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @blur="deleteTodo(todo)" @keydown.delete="deleteTodo(todo)")
+        input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @blur="deleteTodo(todo)")
         a.todo-delete(href="#" @click.prevent="deleteTodo(todo, true)") Delete
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @keyup.enter="addTodo")
     div.controls
