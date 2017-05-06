@@ -5,7 +5,7 @@
         input(type="checkbox" v-model="todo.done")
         input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @blur="deleteTodo(todo)" @keydown.delete="deleteTodo(todo)")
         a.todo-delete(href="#" @click.prevent="deleteTodo(todo, true)") Delete
-    input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @change="addTodo")
+    input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @keyup.enter="addTodo")
     div.controls
       a(href="#" v-if="uncompletedTodos.length > 0" @click.prevent="markAllTodosDone") Mark All as Completed
       a(href="#" v-if="completedTodos.length > 0" @click.prevent="clearCompletedTodos") Clear Completed
@@ -55,6 +55,7 @@ export default {
   },
   methods: {
     addTodo () {
+      console.log("Adding", this.newTodo)
       this.todos.push({ text: this.newTodo, done: false })
       this.newTodo = ""
     },
@@ -80,6 +81,7 @@ export default {
           return
         }
 
+        console.log("Posting notes", this.notes)
         window.parent.postMessage({ text: this.notes, id: this.noteId }, "*")
       }
     }
