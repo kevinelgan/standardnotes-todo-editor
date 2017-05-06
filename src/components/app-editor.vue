@@ -4,11 +4,11 @@
       li.todo-item(v-for="todo in todos" :class="{ done: todo.done }")
         input(type="checkbox" v-model="todo.done")
         input(type="text" :placeholder="todoPlaceholder" v-model="todo.text" :disabled="todo.done" @blur="deleteTodo(todo)")
-        a.todo-delete(href="#" @click.prevent="deleteTodo(todo, true)") Delete
+        button.todo-delete(href="#" @click.prevent="deleteTodo(todo, true)") Delete
     input.todo-new(type="text" autofocus :placeholder="todoPlaceholder" v-model="newTodo" @keyup.enter="addTodo")
     div.controls
-      a(href="#" v-if="uncompletedTodos.length > 0" @click.prevent="markAllTodosDone") Mark All as Completed
-      a(href="#" v-if="completedTodos.length > 0" @click.prevent="clearCompletedTodos") Clear Completed
+      button(href="#" v-if="uncompletedTodos.length > 0" @click.prevent="markAllTodosDone") Mark All as Completed
+      button(href="#" v-if="completedTodos.length > 0" @click.prevent="clearCompletedTodos") Clear Completed
 </template>
 
 <script>

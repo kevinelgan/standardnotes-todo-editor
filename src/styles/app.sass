@@ -1,15 +1,21 @@
 *
   box-sizing: border-box
 
+button
+  border: 1px solid #ccc
+  padding: 8px
+  background-color: white
+  font-size: 12px
+  margin-right: 8px
+  border-radius: 2px
+  cursor: pointer
+
 .app-editor
-  font-family: Helvetica
+  font-family: Helvetica, sans-serif
 
   .controls
     margin-top: 24px
-    margin-left: 36px
-
-    a
-      margin-right: 16px
+    margin-left: 53px
 
   .todo-new
     margin-left: 22px
@@ -17,7 +23,7 @@
     color: #444
     border: none
     outline: none
-    padding: 0.5em 1em 1em 1em
+    padding: 9px 16px 16px 31px
     width: 80%
     background: transparent
 
@@ -30,8 +36,12 @@
       padding: 0.5em
       margin: 0.25em 0
       display: flex
+      position: relative
 
       .todo-delete
+        position: absolute
+        right: 16px
+        top: 2px
         display: none
 
       &:hover .todo-delete
@@ -40,6 +50,7 @@
       input[type="checkbox"]
         position: relative
         top: 2px
+        width: 30px
 
       input[type="text"]
         position: relative
