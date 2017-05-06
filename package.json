@@ -1,7 +1,7 @@
 {
   "name": "standardnotes-todo-editor",
   "version": "0.0.1",
-  "description": "A proof-of-concept todo.txt-like editor for Standard Notes",
+  "description": "A todo editor for Standard Notes",
   "author": "Colin Drake",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "https://github.com/cfdrake/standardnotes-todo-editor"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && mkdir -p build && cp index.html build/index.html && mv dist build/dist",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules && rm -rf build && mkdir build && cp index.html build/index.html && mv dist build/dist",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open --hot"
   },
@@ -30,7 +30,7 @@
     "sass-loader": "^6.0.3",
     "vue-loader": "^11.1.4",
     "vue-template-compiler": "^2.2.1",
-    "webpack": "^2.2.0",
+    "webpack": "^2.5.0",
     "webpack-dev-server": "^2.2.0"
   }
 }
