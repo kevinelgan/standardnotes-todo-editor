@@ -6,7 +6,11 @@ A simple WYSIWYG editor for Standard Notes that saves in the [todo.txt format](h
 
 ## Usage
 
-Open your editor list in Standard Notes by selecting the **Editor** menu, paste `https://cfdrake.github.io/standardnotes-todo-editor/?name=Todos` into the "Add new editor via URL" textbox, then press <kbd>return</kdb>.
+Open your editor list in Standard Notes by selecting the **Editor** menu, paste this into the "Add new editor via URL" textbox:
+```
+https://cfdrake.github.io/standardnotes-todo-editor/?name=Todos&type=editor
+```
+Then press <kbd>Return</kdb>.
 
 ## Build Requirements
 
